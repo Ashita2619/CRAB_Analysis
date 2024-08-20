@@ -119,8 +119,9 @@ class CRAB_pipeline_worker():
  
         #WF_0
         #Fastq pre proccessing, RETURNS list of HSN
-        sample_HSN  = run_assembly(self.cache_path,path_to_reads,self.assembly_output,self.busco_output,run_date)        
-            
+        sample_HSN  = run_pre_assembly(self.cache_path,path_to_reads,self.assembly_output,self.busco_output,run_date)        
+        #print(sample_HSN)
+        #print("-"*50)
         #WF_3.5
         #then do snp stuff 
         #and phylogenetic things

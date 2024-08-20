@@ -8,21 +8,20 @@ def run_docker(path_to_fastq,samples,path_to_shuffled,runDate,snp_output_mount,p
     client = docker.from_env()
 
     #get command
-    paired_end_reads = join_paired_end_reads(samples)
-    #start up container   
-    print("-"*20)
-    print(paired_end_reads) 
-    print("-"*20)
-    print(path_to_fastq)
-    client.containers.run("staphb/lyveset:1.1.4f",volumes=[path_to_shuffled+":/data/CRAB",path_to_fastq+"/tree:/data/FASTQ"],command="/bin/bash -c '"+paired_end_reads+"'")
+    paired_end_reads = join_paired_end_reads(samples) 
+
+    #start up continer to mix reads
+    client.containers.run("staphb/lyveset:latest",volumes=[path_to_shuffled+":/data/CRAB",path_to_fastq+"/fastp:/data/FASTQ"],command="/bin/bash -c '"+paired_end_reads+"'")
+    print("-"*50+"\n")
+    print("Shuffled Reads Docker has exited")
+    print("-"*50+"\n")
     #get snp  string
     #snp_command_string = run_SNPCreation(samples,runDate)
-    #print(snp_command_string+"\n\n\n"+"-"*50)
-    #startup container
-    snp_command_string="set_manage.pl --create /data/Output/021724 && set_manage.pl /data/Output/021724 --change-reference /data/referance/GCF_008632635.1_ASM863263v1_referance_genome.fna && cd /data/Output/021724/reads && ln -sv /data/CRAB/*.fastq.gz .&& launch_set.pl --numcpus 18 /data/Output/021724"
-    #client.containers.run("staphb/lyveset:1.1.4f",volumes=[path_to_shuffled+":/data/CRAB",path_to_referance+":/data/referance",snp_output_mount+":/data/Output"],command="/bin/bash -c '"+snp_command_string+"'")
+    snp_command_string="set_manage.pl --create /data/Output/"+runDate+" && set_manage.pl /data/Output/"+runDate+" --change-reference /data/referance/GCF_008632635.1_ASM863263v1_referance_genome.fna && cd /data/Output/"+runDate+"/reads && ln -sv /data/CRAB/*.fastq.gz .&& launch_set.pl --numcpus 20 /data/Output/"+runDate
 
-    #client.containers.run("staphb/lyveset:1.1.4f",volumes=[path_to_shuffled+":/data/CRAB",path_to_referance+":/data/referance",snp_output_mount+":/data/Output"],command="/bin/bash -c 'echo $PATH && ls & ls CRAB/ && ls /data/referance '")
+    #startup SNP container to run analysis
+    #client.containers.run("staphb/lyveset:latest",volumes=[path_to_shuffled+":/data/CRAB",path_to_referance+":/data/referance",snp_output_mount+":/data/Output"],command="/bin/bash -c '"+snp_command_string+"'")
+
 
 def join_paired_end_reads(samples):
     #path to fastq should put us in the fastp folder created with each sample 
@@ -41,6 +40,11 @@ def join_paired_end_reads(samples):
 #def run_SNPCreation(path_to_shuffled_reads,samples,output_mount,run_date,path_to_referance):
 
 def run_SNPCreation(samples,run_date):
+    #set_manage.pl --create /data/Output/031124 && set_manage.pl /data/Output/031124 
+    #--change-reference /data/referance/GCF_008632635.1_ASM863263v1_referance_genome.fna 
+
+    #&& cd /data/Output/031124/reads && ln -sv /data/CRAB/*.fastq.gz . 
+    #&& launch_set.pl --numcpus 20 /data/Output/031124'
     docker_string="set_manage.pl --create /data/Output/"+run_date+" && set_manage.pl /data/Output/"+run_date+" --change-reference /data/referance/GCF_008632635.1_ASM863263v1_referance_genome.fna && "
 
     for sample in samples:

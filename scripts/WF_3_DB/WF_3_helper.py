@@ -85,7 +85,6 @@ class demographics_import():
         self.no_lims_hsn.drop(columns=['Extracted','Sequenced','Last Name','First Name','Age','Source Type','Country','Comment','WGS serotype','coverage (calculated from workbook)','#total reads','Clusters passing filter',"HAI WGS ID"], axis=1, inplace=True)
 
         self.lims_df= pd.concat([self.lims_df,self.no_lims_hsn])
-
         #self.log.write_log("format_lims_DF","Done!")
 
 
@@ -137,6 +136,7 @@ class demographics_import():
 
         self.df = pd.merge(self.df, self.metrics_df, how="inner", on="hsn")
 
+
        #self.log.write_log("merge_dfs","Done")
     
     def format_dfs(self): #4
@@ -149,11 +149,9 @@ class demographics_import():
             df=self.df, \
             col_lst=self.add_col_lst, \
             col_func_map=self.col_func_map)
-
         # sort/remove columns to match list
         self.df = self.df[self.sample_data_col_order]
 
-        #self.log.write_log("format_dfs","Done")
     
     def create_ncbi_csv(self,csv_out_path,rundate,demo_list):
         
@@ -174,10 +172,12 @@ class demographics_import():
         for i,row in formatted_df.iterrows():
             max_id+=1
             hsn = str(formatted_df['hsn'].iloc[i])
-            res = run_metrics.query("HSN == "+hsn) 
-            if not(res.empty):
+            res = run_metrics.query("HSN == "+hsn)
+            
+            formatted_df.at[i,'HAI_WGS_ID'] = year+"DG-"+str(max_id).rjust(5,'0') 
+
+            if not(res.empty):              
                 
-                formatted_df.at[i,'HAI_WGS_ID'] = year+"DG-"+str(max_id).rjust(5,'0')
                 formatted_df.at[i,'PhiX174_Recovery'] = res["PhiX recovery"].iloc[0]
                 formatted_df.at[i,'Q30'] = res["Q30%"].iloc[0]
                 formatted_df.at[i,'Cluster_Density'] = res["Cluster density"].iloc[0]

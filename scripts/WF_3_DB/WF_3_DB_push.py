@@ -26,9 +26,9 @@ def run_DB_push(runner_path,sample_hsn,mlst_t,f_genes, assembly_metrics,run_date
     sample_hsn = import_demo.get_lims_demographics(sample_hsn,run_date,csv_paths)
     print("lims imported")
     import_demo.format_lims_df()
-
+    
     import_demo.create_metrics_df(assembly_metrics,CDC) #checks genomes completeness but not depth/coverage
-
+    
     import_demo.create_mlst_df(mlst_t)
 
     import_demo.create_genes_df(f_genes)
@@ -36,11 +36,11 @@ def run_DB_push(runner_path,sample_hsn,mlst_t,f_genes, assembly_metrics,run_date
     import_demo.merge_dfs()
 
     import_demo.format_dfs()
-
+    
     import_demo.database_push(csv_paths,run_date)
 
     import_demo.database_push_genes()
-
+    
 
 def rname_dict(working_dic):
 

@@ -353,7 +353,7 @@ def run_create_PDF(samples,run_date, output_pdf_dir ,resource_path,found_genes, 
     
     pdf = PDF("P","mm","Letter" ,resource_path,run_date)
     pdf.set_title("Acinetobacter baumannii WGS Sequence Analysis Report "+run_date)
-    pdf.set_author("AdrianLimaG/CRAB_Analysis Pipeline Developed for KDHE")
+    pdf.set_author("AshitaJawali/CRAB_Analysis Pipeline Developed for KDHE")
     pdf.alias_nb_pages()
 
     #pdf.resource_p = resource_path
@@ -480,7 +480,7 @@ def run_create_PDF(samples,run_date, output_pdf_dir ,resource_path,found_genes, 
 
 #Closing Remarks
     pdf.set_font("times","B",14)
-    pdf.cell(0,4,"Data Prepared by AdrianLimaG/CRAB_Analysis Pipeline", ln=True)
+    pdf.cell(0,4,"Data Prepared by AshitaJawali/CRAB_Analysis Pipeline", ln=True)
     pdf.ln(3)
     pdf.set_font("times","",12)
     pdf.multi_cell(0,4,"Kansas Department of Health & Environment Laboratories\n6810 SE Dwight Street\nTopeka, KS  66620")
@@ -500,7 +500,7 @@ def CDC_PDF_Report(samples,run_date,output_pdf_dir,resource_path,found_genes, ml
 
     pdf = PDF("P","mm","Letter" ,resource_path,run_date)
     pdf.set_title("HAI (hospital aquired infections) WGS Sequence Analysis Report "+run_date)
-    pdf.set_author("AdrianLimaGaray Pipeline Developed for KDHE")
+    pdf.set_author("AshitaJawali Pipeline Developed for KDHE")
     pdf.alias_nb_pages()
 
     #pdf.resource_p = resource_path
@@ -544,7 +544,7 @@ def CDC_PDF_Report(samples,run_date,output_pdf_dir,resource_path,found_genes, ml
 
 #Closing Remarks
     pdf.set_font("times","B",14)
-    pdf.cell(0,4,"Data Prepared by AdrianLimaG/CRAB_Analysis Pipeline", ln=True)
+    pdf.cell(0,4,"Data Prepared by AshitaJawali/CRAB_Analysis Pipeline", ln=True)
     pdf.ln(3)
     pdf.set_font("times","",12)
     pdf.multi_cell(0,4,"Kansas Department of Health & Environment Laboratories\n6810 SE Dwight Street\nTopeka, KS  66620")

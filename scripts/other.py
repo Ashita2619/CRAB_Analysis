@@ -4,6 +4,10 @@ import numpy as np
 import os
 import re
 
+import warnings
+
+warnings.filterwarnings('ignore', message='Data Validation extension is not supported and will be removed', category=UserWarning)
+
 def merge_dataframes(df1=None, df2=None, df1_drop=None, df_final_drop=None, join_lst=None, join_type=None):
     # df1 from qc table, may have duplicate hsns.  Remove common columns between
     # the two dataframes. df2 from results table
@@ -33,9 +37,9 @@ def add_cols(obj=None, df=None, col_lst=None, col_func_map=None):
             try:
                 # try to get additional value to run apply function with
                 val = v[1]
+ 
                 try:
                     val = getattr(obj, v[1])
-
                     # try to catch v[1] as an object variable
                     df[k] = df.apply(lambda row: globals()[v[0]](row, val), axis=1)
                 except Exception:
@@ -62,11 +66,7 @@ def add_cols(obj=None, df=None, col_lst=None, col_func_map=None):
             # ValueError raised if column already exists in dataframe
             except ValueError:
                 pass
-
     return df
-
-
-
 
 
 def format_date(row, colName):
@@ -74,14 +74,24 @@ def format_date(row, colName):
     if (isinstance(row[colName], pd.Timestamp)) or\
         (isinstance(row[colName], datetime.datetime)) or (not pd.isna(row[colName])):
        
-        try:
-            return row[colName].strftime("%m/%d/%Y")
-        except:
-            return datetime.datetime.strftime((datetime.datetime.strptime(row[colName], "%m/%d/%Y")),"%m/%d/%Y")
+       try:
+           return row[colName].strftime("%m/%d/%Y")
+       except:
+           return datetime.datetime.strftime((datetime.datetime.strptime(row[colName], "%m/%d/%Y")),"%m/%d/%Y")
+            #return list(map(lambda x: datetime.datetime.strptime(x,'%m %d, %Y').strftime('%m/%d/%Y'), row[colName]))
         #else:
         #    return np.nan
     else:
-        return np.nan
+       return np.nan
+    
+# def format_date(row, colName):
+#     if pd.notnull(row[colName]):
+#         try:
+#             return row[colName].strftime("%m/%d/%Y")
+#         except:
+#             return datetime.datetime.strftime((datetime.datetime.strptime(row[colName], "%m/%d/%Y")),"%m/%d/%Y")
+#     else:
+#         return np.nan
         
 
 def get_today(row):
