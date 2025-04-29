@@ -26,14 +26,16 @@ def sample_organizer(path_to_samples,output_file_path):
     
     return patient_hsn
 
-def run_phoenix_pipeline(phoniex_samplesheet,output_dir,path_to_phoenix,path_to_kraken):
+def run_phoenix_pipeline(phoenix_samplesheet,output_dir,path_to_phoenix,path_to_kraken):
 
     #command below
     #nextflow run $PATH_TO_INSTALL/phoenix/main.nf -entry PHOENIX -profile <singularity/docker/custom> --input <path_to_samplesheet.csv> --kraken2db $PATH_TO_DB
       #needs the conda env to be installed tho
     #print("ph commaned")
     #print(". $CONDA_PREFIX/home/ssh_user/mambaforge/etc/profile.d/conda.sh && conda activate nextflow && nextflow run "+path_to_phoenix+"/main.nf -profile docker -entry CDC_PHOENIX --input "+phoniex_samplesheet+" --kraken2db "+path_to_kraken+" --outdir "+output_dir)
-    subprocess.run(". $CONDA_PREFIX/home/ssh_user/mambaforge/etc/profile.d/conda.sh && conda activate nextflow && nextflow run "+path_to_phoenix+"/main.nf -profile docker -entry CDC_PHOENIX --input "+phoniex_samplesheet+" --kraken2db "+path_to_kraken+" --outdir "+output_dir,shell=True)
+    subprocess.run("source $HOME/.bashrc && source /epi/home/ssh_user/mambaforge/etc/profile.d/conda.sh && conda activate nextflow && nextflow run "+path_to_phoenix+"/main.nf -profile docker -entry CDC_PHOENIX --input "+phoenix_samplesheet+" --kraken2db "+path_to_kraken+" --outdir "+output_dir, shell=True)
+    #command = f"export TERM=linux && export CURL_CA_BUNDLE=/epi/home/ssh_user/mambaforge/envs/nextflow/ssl/cacert.pem && . {conda_path} && conda activate nextflow && nextflow run {path_to_phoenix}/main.nf -profile docker -entry CDC_PHOENIX --input {phoenix_samplesheet} --kraken2db {path_to_kraken} --outdir {output_dir}"
+    #subprocess.run(command, shell=True)
 
 
 def Phoenix_create_dict(path_to_output,rundate):
@@ -54,9 +56,9 @@ def Phoenix_create_dict(path_to_output,rundate):
         if l[1] == "PASS":
             #create MLST DICT
             try:
-                mlst_type[l[0]] = [l[0],l[10],l[16].split(",")[0][0:] + "_" + l[15].split("(")[1][:-1]]
+                mlst_type[l[0]] = [l[0],l[10],l[17].split(",")[0][0:] + "_" + l[16].split("(")[1][:-1]]
             except:
-                mlst_type[l[0]] = [l[0],l[10],l[16]]
+                mlst_type[l[0]] = [l[0],l[10],l[17]]
             #create AMR GENE DICT
             amr_genes.update(parse_phoenix_AMR(l[0],path_to_output+"/Output/"+rundate+"/"+l[0]+"/AMRFinder/"+l[0]+"_all_genes.tsv"))
             #create ASSEMBLY METERE
