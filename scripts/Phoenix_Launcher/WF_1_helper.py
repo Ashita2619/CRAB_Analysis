@@ -95,5 +95,5 @@ if __name__ == "__main__":
                             #path to samples                             path to sample_sheet_dir
     sample_organizer("")
 
-    #run_phoniex_pipeline("/home/ssh_user/WGS_Drive/Phoenix/SampleSheet/032323.csv","")
+    #run_phoniex_pipeline("/epi/home/ssh_user/WGS_Drive/Phoenix/SampleSheet/032323.csv","")
             
