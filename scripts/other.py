@@ -33,18 +33,18 @@ def add_cols(obj=None, df=None, col_lst=None, col_func_map=None):
         if k in col_func_map.keys():
             # get the pointer to the func/value associated with the column
             v = col_func_map[k]
-            
+
             try:
                 # try to get additional value to run apply function with
                 val = v[1]
- 
+
                 try:
                     val = getattr(obj, v[1])
                     # try to catch v[1] as an object variable
                     df[k] = df.apply(lambda row: globals()[v[0]](row, val), axis=1)
                 except Exception:
                     # use v[1] as a constant argument to the function
-                   
+
                     df[k] = df.apply(lambda row: globals()[v[0]](row, v[1]), axis=1)
             # no additional variables to supply to apply function
             except IndexError:
@@ -53,9 +53,9 @@ def add_cols(obj=None, df=None, col_lst=None, col_func_map=None):
                     df[k] = df.apply(lambda row: globals()[v[0]](row), axis=1)
                 # try using the value as a variable
                 except Exception:
-                    
+
                     val = getattr(obj, v[0])
-                    
+
                     df[k] = val
         # if column not in mapping, insert empty column with appropriate
         # name into the dataframe
@@ -69,29 +69,31 @@ def add_cols(obj=None, df=None, col_lst=None, col_func_map=None):
     return df
 
 
-def format_date(row, colName):
-
-    if (isinstance(row[colName], pd.Timestamp)) or\
-        (isinstance(row[colName], datetime.datetime)) or (not pd.isna(row[colName])):
-       
-       try:
-           return row[colName].strftime("%m/%d/%Y")
-       except:
-           return datetime.datetime.strftime((datetime.datetime.strptime(row[colName], "%m/%d/%Y")),"%m/%d/%Y")
-            #return list(map(lambda x: datetime.datetime.strptime(x,'%m %d, %Y').strftime('%m/%d/%Y'), row[colName]))
-        #else:
-        #    return np.nan
-    else:
-       return np.nan
-    
 # def format_date(row, colName):
-#     if pd.notnull(row[colName]):
-#         try:
-#             return row[colName].strftime("%m/%d/%Y")
-#         except:
-#             return datetime.datetime.strftime((datetime.datetime.strptime(row[colName], "%m/%d/%Y")),"%m/%d/%Y")
+
+#     if (isinstance(row[colName], pd.Timestamp)) or\
+#         (isinstance(row[colName], datetime.datetime)) or (not pd.isna(row[colName])):
+       
+#        try:
+#            return row[colName].strftime("%m/%d/%Y")
+#        except:
+#            return datetime.datetime.strftime((datetime.datetime.strptime(row[colName], "%m/%d/%Y")),"%m/%d/%Y")
+#             #return list(map(lambda x: datetime.datetime.strptime(x,'%m %d, %Y').strftime('%m/%d/%Y'), row[colName]))
+#         #else:
+#         #    return np.nan
 #     else:
-#         return np.nan
+#        return np.nan
+    
+def format_date(row, colName):
+    if pd.notnull(row[colName]):
+        try:
+            return row[colName].strftime("%m/%d/%Y")
+        except:
+            return datetime.datetime.strftime((datetime.datetime.strptime(row[colName], "%m/%d/%Y")),"%m/%d/%Y")
+    else:
+        return np.nan
+
+
         
 
 def get_today(row):
@@ -112,7 +114,7 @@ def parse_seq_id(row, arg):
         seq_id = str(row['seqName']).split("_")
     # if split didn't find matches, it is dealing with folder, should
     # be split by ".", also has different indexes for values
-    if len(seq_id) == 1: #this won't happend anymore
+    if len(seq_id) == 1: #this won't happen anymore
         # WF 3
         seq_id = str(row["seqName"]).split(".")
         if arg == "hsn":
