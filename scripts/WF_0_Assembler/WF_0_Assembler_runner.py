@@ -6,7 +6,7 @@ def run_assembly(resource_path,path_to_samples,output_dir,busco_output_dir,runD)
     
     #puts all of our samples in to dict with KEY HSN and [R1,R2]
     samp = sample_organizer(path_to_samples)
-    print("Organiizing Complete")
+    print("Organizing Complete")
 
     #trimms reads, remove adapaters, remove poor quality reads
     samp = data_pre_processor(path_to_samples, samp)
@@ -28,7 +28,7 @@ def run_pre_assembly(resource_path,path_to_samples,output_dir,busco_output_dir,r
     
     #puts all of our samples in to dict with KEY HSN and [R1,R2]
     samp = sample_organizer(path_to_samples)
-    print("Organiizing Complete")
+    print("Organizing Complete")
 
     #trimms reads, remove adapaters, remove poor quality reads
     samp = data_pre_processor(path_to_samples, samp)
