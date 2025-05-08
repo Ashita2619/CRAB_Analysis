@@ -6,7 +6,7 @@ def run_AMR(path_to_contigs,samples,abricate_output):
             os.mkdir(abricate_output)
     for sample in samples :
         #os.mkdir(abricate_output+"/"+sample)
-        subprocess.run(". $CONDA_PREFIX/home/ssh_user/mambaforge/etc/profile.d/conda.sh && conda activate CRAB && abricate "+path_to_contigs+"/"+sample+"/scaffolds.fasta > "+abricate_output+"/"+sample+"_AMRgenes.tsv",shell= True)
+        subprocess.run(". $CONDA_PREFIX/epi/home/ssh_user/mambaforge/etc/profile.d/conda.sh && conda activate CRAB && abricate "+path_to_contigs+"/"+sample+"/scaffolds.fasta > "+abricate_output+"/"+sample+"_AMRgenes.tsv",shell= True)
 
 def parse_AMR(abricate_output,samples):
 
