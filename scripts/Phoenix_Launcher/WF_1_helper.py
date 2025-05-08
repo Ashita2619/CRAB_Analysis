@@ -40,7 +40,7 @@ def run_phoenix_pipeline(phoenix_samplesheet,output_dir,path_to_phoenix,path_to_
 
 def Phoenix_create_dict(path_to_output,rundate):
     #function will read in file container output and format it to be pushed to DB
-    output_f = open(path_to_output+"/Output/"+rundate+"/Phoenix_Output_Report.tsv","r")
+    output_f = open(path_to_output+"/Output/"+rundate+"/Phoenix_Summary.tsv","r")
     lines = output_f.readlines()
     mlst_type = {}
     assembly_metrics={}
