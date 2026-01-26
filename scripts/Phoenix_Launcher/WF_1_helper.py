@@ -32,9 +32,9 @@ def run_phoenix_pipeline(phoenix_samplesheet,output_dir,path_to_phoenix,path_to_
     #nextflow run $PATH_TO_INSTALL/phoenix/main.nf -entry PHOENIX -profile <singularity/docker/custom> --input <path_to_samplesheet.csv> --kraken2db $PATH_TO_DB
       #needs the conda env to be installed tho
     #print("ph commaned")
-    #print(". $CONDA_PREFIX/home/ssh_user/mambaforge/etc/profile.d/conda.sh && conda activate nextflow && nextflow run "+path_to_phoenix+"/main.nf -profile docker -entry CDC_PHOENIX --input "+phoniex_samplesheet+" --kraken2db "+path_to_kraken+" --outdir "+output_dir)
-    subprocess.run("source $HOME/.bashrc && source /epi/home/ssh_user/mambaforge/etc/profile.d/conda.sh && conda activate nextflow && nextflow run "+path_to_phoenix+"/main.nf -profile docker -entry CDC_PHOENIX --input "+phoenix_samplesheet+" --kraken2db "+path_to_kraken+" --outdir "+output_dir, shell=True)
-    #command = f"export TERM=linux && export CURL_CA_BUNDLE=/epi/home/ssh_user/mambaforge/envs/nextflow/ssl/cacert.pem && . {conda_path} && conda activate nextflow && nextflow run {path_to_phoenix}/main.nf -profile docker -entry CDC_PHOENIX --input {phoenix_samplesheet} --kraken2db {path_to_kraken} --outdir {output_dir}"
+    #print(". $CONDA_PREFIX/home/ashita.jawali@kdhe.state.ks.us/mambaforge/etc/profile.d/conda.sh && conda activate nextflow && nextflow run "+path_to_phoenix+"/main.nf -profile docker -entry CDC_PHOENIX --input "+phoniex_samplesheet+" --kraken2db "+path_to_kraken+" --outdir "+output_dir)
+    subprocess.run("source $HOME/.bashrc && source /epi/home/ashita.jawali@kdhe.state.ks.us/mambaforge/etc/profile.d/conda.sh && conda activate nextflow && nextflow run "+path_to_phoenix+"/main.nf -profile docker -entry CDC_PHOENIX --input "+phoenix_samplesheet+" --kraken2db "+path_to_kraken+" --outdir "+output_dir, shell=True)
+    #command = f"export TERM=linux && export CURL_CA_BUNDLE=/epi/home/ashita.jawali@kdhe.state.ks.us/mambaforge/envs/nextflow/ssl/cacert.pem && . {conda_path} && conda activate nextflow && nextflow run {path_to_phoenix}/main.nf -profile docker -entry CDC_PHOENIX --input {phoenix_samplesheet} --kraken2db {path_to_kraken} --outdir {output_dir}"
     #subprocess.run(command, shell=True)
 
 
@@ -95,5 +95,5 @@ if __name__ == "__main__":
                             #path to samples                             path to sample_sheet_dir
     sample_organizer("")
 
-    #run_phoniex_pipeline("/epi/home/ssh_user/WGS_Drive/Phoenix/SampleSheet/032323.csv","")
+    #run_phoniex_pipeline("/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/Phoenix/SampleSheet/032323.csv","")
             
