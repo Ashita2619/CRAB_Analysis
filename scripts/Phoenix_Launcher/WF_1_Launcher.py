@@ -43,5 +43,5 @@ def WF_3_create_report(samps,run_d,pdf_path,resource_p,genes,mlst_d):
 
 if __name__ == "__main__":
 
-    WF_1_Launch_Phoenix("/epi/home/ssh_user/WGS_Drive/Phoenix/sample_fastq/032323","/epi/home/ssh_user/WGS_Drive/Phoenix/SampleSheet","032323","/epi/home/ssh_user/WGS_Drive/Phoenix/Output","/epi/home/ssh_user/Documents/GitHub/phoenix","/media/ssh_user/Data_Drive/Minikraken2DB")
+    WF_1_Launch_Phoenix("/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/Phoenix/sample_fastq/032323","/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/Phoenix/SampleSheet","032323","/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/Phoenix/Output","/epi/home/ashita.jawali@kdhe.state.ks.us/Documents/GitHub/phoenix","/media/ashita.jawali@kdhe.state.ks.us/Data_Drive/Minikraken2DB")
     
