@@ -1,22 +1,22 @@
 {
 
 
-    "assembly_output" : "/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing/assembled",
-    "prokka_output" : "/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing/prokka",
-    "abricate_output" : "/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing/amr_genes",
-    "busco_output" : "/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing/busco", 
-    "path_to_referance_genome" : "/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing/referance/",
-    "path_to_shuffled_reads" : "/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing/docker_output/shuffle_reads",
-    "path_to_snp_output" : "/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing/docker_output/snp_output",
-    "path_to_tree_output" :"/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing/docker_output/snp_output",
-    "path_to_pdf_output" : "/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing/result",
-    "CDC_path_to_pdf_output" : "/epi/home/ssh_user/WGS_Drive/Phoenix/Reports",
-    "csv_path" : "/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing",
-    "CDC_csv_path" : "/epi/home/ssh_user/WGS_Drive/Phoenix/sample_fastq",
-    "StrainDB" : "/epi/home/ssh_user/WGS_Drive/CRAB_WGS_Sequencing/strain_db/pan-genome-db.hdf5",
-    "phoenix_p": "/epi/home/ssh_user/Documents/GitHub/phoenix",
-    "phoenix_output":"/epi/home/ssh_user/WGS_Drive/Phoenix",
-    "kraken_path":"/epi/home/ssh_user/WGS_Drive/Minikraken2DB"
+    "assembly_output" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing/assembled",
+    "prokka_output" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing/prokka",
+    "abricate_output" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing/amr_genes",
+    "busco_output" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing/busco", 
+    "path_to_referance_genome" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing/referance/",
+    "path_to_shuffled_reads" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing/docker_output/shuffle_reads",
+    "path_to_snp_output" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing/docker_output/snp_output",
+    "path_to_tree_output" :"/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing/docker_output/snp_output",
+    "path_to_pdf_output" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing/result",
+    "CDC_path_to_pdf_output" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/Phoenix/Reports",
+    "csv_path" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing",
+    "CDC_csv_path" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/Phoenix/sample_fastq",
+    "StrainDB" : "/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/CRAB_WGS_Sequencing/strain_db/pan-genome-db.hdf5",
+    "phoenix_p": "/epi/home/ashita.jawali@kdhe.state.ks.us/Documents/GitHub/phoenix",
+    "phoenix_output":"/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/Phoenix",
+    "kraken_path":"/epi/home/ashita.jawali@kdhe.state.ks.us/WGS_Drive/Minikraken2DB"
 
 
 }
