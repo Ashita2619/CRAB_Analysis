@@ -1,9 +1,5 @@
 from WF_3_DB.WF_3_helper import demographics_import
 
-
-
-
-
 def run_DB_push(runner_path,sample_hsn,mlst_t,f_genes, assembly_metrics,run_date,csv_paths,CDC=False):
     #assembly metrics contain
 
