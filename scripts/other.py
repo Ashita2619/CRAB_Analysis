@@ -54,9 +54,12 @@ def add_cols(obj=None, df=None, col_lst=None, col_func_map=None):
                 # try using the value as a variable
                 except Exception:
 
-                    val = getattr(obj, v[0])
+                    if v[0] in globals():
+                       df[k] = df.apply(lambda row: globals()[v[0]](row), axis=1)
+                    else:
+                       val = getattr(obj,v[0])
+                       df[k] = val
 
-                    df[k] = val
         # if column not in mapping, insert empty column with appropriate
         # name into the dataframe
         else:
